@@ -309,7 +309,7 @@ body{
    ===================================== */
 
 .hero{
-
+    padding-top: 120px;
     min-height:100vh;
 
     width:min(1300px,92%);
