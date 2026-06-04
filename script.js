@@ -245,7 +245,7 @@ function changeTestimonial() {
 setInterval(changeTestimonial, 5000);
 
 // ==========================
-// CONTACT FORM
+// CONTACT FORM (UPDATED VALIDATION ONLY)
 // ==========================
 
 const form =
@@ -257,11 +257,25 @@ if (form) {
 
         e.preventDefault();
 
-        const button =
-            form.querySelector("button");
+        const name = form.querySelector('input[type="text"]');
+        const email = form.querySelector('input[type="email"]');
+        const message = form.querySelector('textarea');
+
+        if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+            alert("Please fill in all fields before sending your message.");
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email.value.trim())) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        const button = form.querySelector("button");
 
         button.textContent = "Message Sent ✓";
-
         button.disabled = true;
 
         setTimeout(() => {
